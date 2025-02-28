@@ -1,74 +1,73 @@
-### **Prompt: Employee Management Application in .NET MAUI (MVVM Architecture)**  
+### **Prompt: Employee Management App in .NET 9 MAUI (Without MVVM, No External Libraries)**
 
-#### **Project Overview**  
-Develop a **mobile application** using **.NET MAUI** and **SQLite** to manage employees. The application should follow the **MVVM (Model-View-ViewModel) architecture** for clean separation of concerns and maintainability.  
+#### **Objective**
+Develop a simple **mobile application** using **.NET 9 MAUI** and **SQLite** to manage employees. The application should allow users to **view, add, edit, delete, and export employee data via email**.  
 
-#### **Core Features**  
+#### **Application Features**  
 
 1. **Employee List (Grid View)**
-   - Display all employees in a **Grid** on application load.
-   - Ensure the list updates dynamically after any CRUD operation.
-   - Clicking on a row should trigger an event to select the employee for modification or deletion.
+   - Display all employees in a **Grid** when the app loads.
+   - Refresh the list after each action (add, edit, delete).
+   - Clicking a row should allow selecting an employee for modification or deletion.
 
 2. **Add Employee**
-   - Implement an "Add" button to insert a new employee.
-   - Validate all input fields before adding (no empty values, correct data types).
+   - A form with fields: **First Name, Last Name, Gender, Salary, Birthdate**.
+   - Validate inputs before saving (ensure required fields are filled correctly).
    - Show an error message if validation fails.
 
 3. **Edit Employee**
-   - Implement an "Edit" button to modify employee details.
-   - When an employee is selected, populate the form fields with existing data.
-   - Allow modifications and save the updated data.
+   - Select an employee from the grid, which fills the form with existing data.
+   - Allow users to modify details and save changes.
 
 4. **Delete Employee**
-   - Implement a "Delete" button to remove an employee from the database.
-   - Require the user to select an employee before deletion.
-   - Show a confirmation dialog before proceeding.
+   - Select an employee and click "Delete" to remove them from the database.
+   - Show a **confirmation dialog** before deletion.
 
 5. **Export Employee Data via Email**
-   - Implement an "Export" button to send an email to `admin@app.com` containing:
-     - Total number of employees.
-     - Average age of employees.
-     - Average salary.
-   - Dynamically calculate these values before sending.
+   - A button to send an email with:
+     - **Total employees count**  
+     - **Average employee age**  
+     - **Average salary**  
+   - The email should be sent to `admin@app.com`.
 
 ---
 
 ### **Technical Requirements**  
 
-#### **1. Model (Data Layer)**
-   - Create an **Employee model** with the following properties:
-     ```csharp
-     public class Employee
-     {
-         public int Id { get; set; } // Auto-increment
-         public string FirstName { get; set; }
-         public string LastName { get; set; }
-         public string Gender { get; set; } // "Homme" or "Femme"
-         public decimal Salary { get; set; }
-         public DateTime BirthDate { get; set; }
-     }
+1. **Use SQLite for Data Storage**  
+   - Create a simple **Employee** table:
+     ```sql
+     CREATE TABLE Employees (
+         Id INTEGER PRIMARY KEY AUTOINCREMENT,
+         FirstName TEXT NOT NULL,
+         LastName TEXT NOT NULL,
+         Gender TEXT CHECK(Gender IN ('Homme', 'Femme')) NOT NULL,
+         Salary REAL NOT NULL,
+         BirthDate TEXT NOT NULL
+     );
      ```
-   - Use **SQLite** for local data storage.
 
-#### **2. ViewModel (Business Logic Layer)**
-   - Implement **`EmployeeViewModel`** to manage UI logic and interact with the database.
-   - Use **ObservableCollection** for real-time UI updates.
-   - Implement **Commands** for Add, Edit, Delete, and Export functionalities.
+2. **Use Simple Code-Behind Approach**  
+   - Handle UI logic directly in the code-behind.
+   - Use **event handlers** for button clicks.
 
-#### **3. View (UI Layer)**
-   - Implement UI in XAML.
-   - Use **Data Binding** to connect ViewModel properties to UI elements.
-   - Design a **clean and responsive interface**.
+3. **UI Design**  
+   - Use **XAML for UI**.
+   - Simple layout with **Entry fields, Buttons, and Grid** for displaying employees.
 
-#### **Evaluation Criteria (40 Points)**
+4. **Email Sending**
+   - Implement **email export functionality** using built-in .NET MAUI features (no external SMTP libraries).
+
+---
+
+### **Evaluation Criteria (40 Points)**
 | Criteria | Points |
 |----------|--------|
-| Correct display of employee data in Grid | 5 |
-| Adding employees with input validation | 5 |
+| Displaying employees correctly in the Grid | 5 |
+| Adding employees with validation | 5 |
 | Editing employees with pre-filled form | 5 |
 | Deleting employees with confirmation | 5 |
 | Exporting data via email | 5 |
-| Handling row click events in Grid | 5 |
-| Clean and well-structured code (MVVM adherence) | 5 |
-| Clear and functional user interface | 5 |
+| Handling row selection in the Grid | 5 |
+| Simple, clean, and maintainable code | 5 |
+| Functional and clea
