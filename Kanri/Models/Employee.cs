@@ -1,9 +1,11 @@
 using System.ComponentModel.DataAnnotations;
+using SQLite;
 
 namespace Kanri.Models
 {
     public class Employee
     {
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Le prénom est obligatoire")]
