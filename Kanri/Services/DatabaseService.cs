@@ -12,7 +12,13 @@ namespace Kanri.Services
         {
             var dbPath = Path.Combine(FileSystem.AppDataDirectory, DbName);
             _database = new SQLiteAsyncConnection(dbPath);
-            _database.CreateTableAsync<Employee>().Wait();
+            InitializeDatabase().Wait();
+        }
+
+        private async Task InitializeDatabase()
+        {
+            await _database.DropTableAsync<Employee>();
+            await _database.CreateTableAsync<Employee>();
         }
 
         public async Task<List<Employee>> GetEmployeesAsync()
@@ -38,6 +44,9 @@ namespace Kanri.Services
         public async Task<(int totalCount, double averageAge, double averageSalary)> GetStatisticsAsync()
         {
             var employees = await GetEmployeesAsync();
+            if (!employees.Any())
+                return (0, 0, 0);
+                
             return (
                 employees.Count,
                 employees.Average(e => e.Age),

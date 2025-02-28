@@ -31,12 +31,29 @@
                         <Label Text="Date de naissance" Grid.Column="5" TextColor="White" FontAttributes="Bold"/>
                     </Grid>
 
-                    <CollectionView x:Name="EmployeesCollection" SelectionMode="Single" 
+                    <CollectionView x:Name="EmployeesCollection" 
+                                  SelectionMode="Single" 
                                   SelectionChanged="OnSelectionChanged">
+                        <CollectionView.Resources>
+                            <Style TargetType="Grid">
+                                <Setter Property="VisualStateManager.VisualStateGroups">
+                                    <VisualStateGroupList>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Normal" />
+                                            <VisualState x:Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateGroupList>
+                                </Setter>
+                            </Style>
+                        </CollectionView.Resources>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Padding="10" ColumnDefinitions="*, *, *, *, *, *">
-                                    <Label Text="{Binding Id}" Grid.Column="0" />
+                                    <Label Text="{Binding Id}" Grid.Column="0" TextColor="{StaticResource Primary}" FontAttributes="Bold" />
                                     <Label Text="{Binding FirstName}" Grid.Column="1" />
                                     <Label Text="{Binding LastName}" Grid.Column="2" />
                                     <Label Text="{Binding Gender}" Grid.Column="3" />
