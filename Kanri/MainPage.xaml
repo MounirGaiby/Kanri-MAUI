@@ -57,7 +57,7 @@
                                     <Label Text="{Binding FirstName}" Grid.Column="1" />
                                     <Label Text="{Binding LastName}" Grid.Column="2" />
                                     <Label Text="{Binding Gender}" Grid.Column="3" />
-                                    <Label Text="{Binding Salary, StringFormat='{0:C}'}" Grid.Column="4" />
+                                    <Label Text="{Binding Salary, StringFormat='{0:N2} MAD'}" Grid.Column="4" />
                                     <Label Text="{Binding BirthDate, StringFormat='{0:dd/MM/yyyy}'}" Grid.Column="5" />
                                 </Grid>
                             </DataTemplate>

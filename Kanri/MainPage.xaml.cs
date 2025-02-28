@@ -116,7 +116,7 @@ public partial class MainPage : ContentPage
                 Subject = "Statistiques des Employés",
                 Body = $"Nombre total d'employés: {stats.totalCount}\n" +
                       $"Moyenne d'âge des employés: {stats.averageAge:F1} ans\n" +
-                      $"Moyenne des salaires: {stats.averageSalary:C2}",
+                      $"Moyenne des salaires: {stats.averageSalary:N2} DH",
                 To = new List<string> { "admin@app.com" }
             };
             
