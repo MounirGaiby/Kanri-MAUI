@@ -1,6 +1,6 @@
 **Application de Gestion des Employés .NET 9 MAUI**
 
-Cette application simple en .NET 9 MAUI permet la gestion basique des employés. Elle offre les fonctionnalités suivantes :
+Cette application en .NET 9 MAUI permet la gestion basique des employés. Elle offre les fonctionnalités suivantes :
 
 * **Affichage des employés :** Une liste des employés est présentée dans une grille.
 * **Ajout, modification et suppression :** L'application permet d'ajouter de nouveaux employés, de modifier les informations existantes et de supprimer des employés.
