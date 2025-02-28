@@ -12,13 +12,7 @@ namespace Kanri.Services
         {
             var dbPath = Path.Combine(FileSystem.AppDataDirectory, DbName);
             _database = new SQLiteAsyncConnection(dbPath);
-            InitializeDatabase().Wait();
-        }
-
-        private async Task InitializeDatabase()
-        {
-            await _database.DropTableAsync<Employee>();
-            await _database.CreateTableAsync<Employee>();
+            _database.CreateTableAsync<Employee>().Wait();
         }
 
         public async Task<List<Employee>> GetEmployeesAsync()
