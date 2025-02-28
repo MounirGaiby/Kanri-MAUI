@@ -1,37 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Kanri.MainPage"
-             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}">
+             x:Class="Kanri.MainPage">
 
     <ScrollView>
         <VerticalStackLayout Spacing="15" Padding="15">
-            <Frame BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Gray900}}"
+            <Frame BackgroundColor="{StaticResource Primary}"
                    Padding="15" CornerRadius="10">
                 <HorizontalStackLayout Spacing="10">
-                    <Button Text="Ajouter" Clicked="OnAddClicked" 
-                            BackgroundColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource Gray700}}"
-                            TextColor="White" />
+                    <Button Text="Ajouter" Clicked="OnAddClicked" />
                     <Button Text="Modifier" Clicked="OnEditClicked" 
-                            IsEnabled="{Binding IsEmployeeSelected}"
-                            BackgroundColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Gray700}}"
-                            TextColor="White" />
+                            IsEnabled="{Binding IsEmployeeSelected}" />
                     <Button Text="Supprimer" Clicked="OnDeleteClicked" 
-                            IsEnabled="{Binding IsEmployeeSelected}"
-                            BackgroundColor="{AppThemeBinding Light={StaticResource Error}, Dark={StaticResource Gray700}}"
-                            TextColor="White" />
-                    <Button Text="Exporter" Clicked="OnExportClicked"
-                            BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Gray700}}"
-                            TextColor="White" />
+                            IsEnabled="{Binding IsEmployeeSelected}" />
+                    <Button Text="Exporter" Clicked="OnExportClicked" />
                 </HorizontalStackLayout>
             </Frame>
 
-            <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}"
-                   Padding="15" CornerRadius="10">
+            <Frame Padding="15" CornerRadius="10">
                 <!-- Column Headers -->
                 <VerticalStackLayout Spacing="10">
                     <Grid ColumnDefinitions="*, *, *, *, *, *" 
-                          BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Gray800}}"
+                          BackgroundColor="{StaticResource Primary}"
                           Padding="10">
                         <Label Text="ID" Grid.Column="0" TextColor="White" FontAttributes="Bold"/>
                         <Label Text="Prénom" Grid.Column="1" TextColor="White" FontAttributes="Bold"/>
@@ -60,7 +50,6 @@
             </Frame>
 
             <Frame x:Name="EmployeeForm" IsVisible="False"
-                   BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}"
                    Padding="15" CornerRadius="10">
                 <VerticalStackLayout Spacing="10">
                     <Entry x:Name="FirstNameEntry" Placeholder="Prénom" />
@@ -74,12 +63,8 @@
                     <Entry x:Name="SalaryEntry" Placeholder="Salaire" Keyboard="Numeric" />
                     <DatePicker x:Name="BirthDatePicker" />
                     <HorizontalStackLayout Spacing="10">
-                        <Button Text="Sauvegarder" Clicked="OnSaveClicked"
-                                BackgroundColor="{AppThemeBinding Light={StaticResource Success}, Dark={StaticResource Gray700}}"
-                                TextColor="White" />
-                        <Button Text="Annuler" Clicked="OnCancelClicked"
-                                BackgroundColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray700}}"
-                                TextColor="White" />
+                        <Button Text="Sauvegarder" Clicked="OnSaveClicked" />
+                        <Button Text="Annuler" Clicked="OnCancelClicked" />
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
             </Frame>
